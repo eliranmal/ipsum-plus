@@ -11,7 +11,7 @@ author: lyn
 # omitting http:// at the start forces HTTPS
 domain: eliranmal.github.io
 url: https://eliranmal.github.io
-baseurl: /eopsum
+baseurl: /wat
 permalink: pretty
 
 

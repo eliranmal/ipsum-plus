@@ -5,4 +5,4 @@
 
 things and stuff
 
-[//]: # ({% include terms.html %})
+<!-- {% include terms.html %} -->
