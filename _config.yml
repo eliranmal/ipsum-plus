@@ -1,8 +1,8 @@
 
 ### site meta
 
-title: lorem ipsum
-description: eo inspired ipsum text
+title: wat ipsum
+description: wat inspired ipsum text
 author: lyn
 
 
@@ -22,11 +22,6 @@ permalink: pretty
 ### build settings
 
 theme: jekyll-theme-minimal
-#highlighter: none
-#markdown: kramdown
-#kramdown:
-#  syntax_highlighter_opts:
-#    disable: true
 exclude:
   - README.md
   - Gemfile

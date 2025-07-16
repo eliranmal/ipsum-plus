@@ -11,23 +11,24 @@ $font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 
 html {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 body {
   margin: 0;
   font-size: 1rem;
-  //background-color: #f2f2f2;
+  background-color: hotpink;
 }
 
 a, a:hover, a:focus, a:active {
-  //color: hotpink;
+  color: mediumpurple;
+  color: lavender;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   font-weight: 400;
-  //color: #888;
+  color: lightyellow;
 }
 
 h1, h2 {
@@ -59,45 +60,43 @@ header {
 
   // site title
   h1 {
-    line-height: .85;
-    font-size: 4rem;
-    margin-block-end: -.333rem;
+    font-family: 'Bestie Seventy', sans-serif;
+    letter-spacing: .045em;
+    font-size: 3.75rem;
+    line-height: 1.75;
+    margin-block-end: 0;
+    text-shadow: .111em .111em .167em mediumpurple;
 
-    // emojis watermark
-    a:after {
-      content: '✏️✏️✏️';
-      display: block;
-      line-height: .45;
-      font-size: 1.35em;
-      filter: grayscale(1);
-      opacity: .1;
+    &,
+    & a:hover,
+    & a:focus {
+      font-weight: 400;
     }
   }
 
   // site description
   > p {
-    line-height: 1.2;
     font-variant: all-small-caps;
   }
 }
 
 footer {
-  top: 250px;
+  top: 280px;
 
   div {
     height: 100%;
 
-    //dl {
-    //  min-height: 2.5em;
-    //  max-height: calc(100% - 50px);
-    //  overflow-y: auto;
-    //}
+    > :only-child {
+      min-height: 2.5em;
+      max-height: calc(100% - 50px);
+      overflow-y: auto;
+    }
   }
 }
 
 
 
-// overrides theme rules
+// override theme rules
 
 @media print, screen and (max-width: 960px) {
   header {
@@ -122,33 +121,3 @@ footer {
   opacity: .5;
 }
 
-
-// playing with fonts
-
-html {
-  font-size: 18px;
-}
-
-h1,
-h1 a:hover,
-h1 a:focus {
-  font-weight: 400;
-}
-
-header h1 {
-  font-family: 'Bestie Seventy', sans-serif;
-  letter-spacing: .045em;
-  font-size: 3.75rem;
-  line-height: 1.75;
-  margin-block-end: 0;
-
-  a:after {
-    font-size: 1.15em;
-    letter-spacing: .1em;
-    line-height: .25;
-  }
-}
-
-footer {
-  top: 280px;
-}
