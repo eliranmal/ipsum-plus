@@ -1,0 +1,33 @@
+
+### site meta
+
+title: lorem ipsum
+description: eo inspired ipsum text
+author: lyn
+
+
+### host settings
+
+# omitting http:// at the start forces HTTPS
+domain: eliranmal.github.io
+url: https://eliranmal.github.io
+baseurl: /eopsum
+permalink: pretty
+
+
+### site structure
+
+
+
+### build settings
+
+theme: jekyll-theme-minimal
+#highlighter: none
+#markdown: kramdown
+#kramdown:
+#  syntax_highlighter_opts:
+#    disable: true
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
