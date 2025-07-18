@@ -11,14 +11,14 @@ $layout-v-pad: 15vh;
  * note: only use absolute units for $size (e.g. no 'em'),
  * as it's used both for font-size and box sizes
  */
-@mixin round-button($size, $font-size: $size * .3, $border-width: $size * .0125) {
+@mixin round-button($size, $font-size: $size * .3) {
   box-sizing: content-box;
   display: block;
   width: $size;
   height: $size;
   padding: 0;
   border: 0 none;
-  border-radius: ($size * .5) + $border-width;
+  border-radius: $size * .5;
   font-size: $font-size;
   line-height: #{$size};
   text-align: center;
@@ -112,8 +112,8 @@ header {
 #grab-btn {
   $button-size: 9rem;
   @include round-button($button-size, 1rem);
-  float: right;
   margin-top: calc(100vh - #{$button-size} - (#{$layout-v-pad} * 2));
+  float: right;
   font-family: 'Bestie Seventy', sans-serif;
   color: mediumpurple;
   background-color: lavender;
@@ -143,6 +143,34 @@ header {
 }
 
 
+// responsive layout
+
+header h1 {
+  transition: font-size .5s;
+}
+
+#grab-btn {
+  transition: margin .5s;
+}
+
+@media print, screen and (max-width: 960px) {
+  header h1 {
+    font-size: 3.25rem;
+  }
+
+  #grab-btn {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media print, screen and (max-width: 720px) {
+  header h1 {
+    font-size: 2.75rem;
+  }
+}
+
+
 
 // override theme rules
 
@@ -152,8 +180,7 @@ header {
   }
 
   section {
-    padding: 35px 0 0;
-    margin-block-start: 35px;
+    border: 0 none;
   }
 }
 
