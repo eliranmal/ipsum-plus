@@ -12,10 +12,11 @@ author: me
 domain: eliranmal.github.io
 url: https://eliranmal.github.io
 baseurl: /ipsum-plus
+
+
+### site settings
 permalink: pretty
-
-
-### site structure
+gtm: 'GTM-T85T87GR'
 
 
 
