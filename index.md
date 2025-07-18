@@ -9,42 +9,45 @@
 
 <script>
 
-    const loadMap = (reversed) => {
-        const map = new Map();
-        let key, value;
+    const loadMap = (reverse) => {
+        const entries = [
         {% for entry in site.data.map %}
-            key = reversed ? '{{ entry[1] }}' : '{{ entry[0] }}';
-            value = reversed ? '{{ entry[0] }}' : '{{ entry[1] }}';
-            map.set(key, value);
+            ['{{ entry[0] }}', '{{ entry[1] }}'],
         {% endfor %}
-        return map;
+        ];
+        if (reverse) {
+            entries.map(entry => entry.reverse());
+        }
+        return new Map(entries);
     };
 
-    const loadTerms = (scrambled) => {
-        const terms = [];
+    const loadTerms = () => {
+        const terms = [
         {% for term in site.data.terms %}
-            terms.push('{{ term }}');
+            '{{ term }}',
         {% endfor %}
-        if (scrambled) {
-            return terms.sort(() => Math.random() - .5)
-        }
+        ];
         return terms;
     };
 
-    const encodeText = (text) => {
-        const map = loadMap();
+    const scramble = (arr) => {
+        return arr.sort(() => Math.random() - .5)
+    };
+
+    const parseText = (text, reverseMap) => {
+        const map = loadMap(reverseMap);
         return text
             .split('')
             .map(c => map.get(c) ?? c)
             .join('');
     };
 
+    const encodeText = (text) => {
+        return parseText(text);
+    };
+
     const decodeText = (text) => {
-        const reverseMap = loadMap(true);
-        return text
-            .split('')
-            .map(c => reverseMap.get(c) ?? c)
-            .join('');
+        return parseText(text, true);
     };
 
     const marquee = (el) => {
@@ -63,23 +66,21 @@
     };
 
     const loadIpsum = () => {
-        return loadTerms(true)
+        return scramble(loadTerms())
             .join(' ')
             .repeat(3);
     };
 
-    const grabIpsum = () => {
+    const grabBtn = document.getElementById('grab-btn');
+    const ipsumTextEl = document.getElementById('ipsum-text');
+
+    const showGrabBtnMarquee = marquee(grabBtn);
+    grabBtn.addEventListener('click', () => {
         const dText = loadIpsum();
         navigator.clipboard.writeText(dText);
         showGrabBtnMarquee('copied to clipboard!');
-    };
-
-    const grabBtn = document.getElementById('grab-btn');
-    const ipsumTextEl = document.getElementById('ipsum-text');
-    const showGrabBtnMarquee = marquee(grabBtn);
+    });
 
     ipsumTextEl.value = encodeText(loadIpsum());
-
-    grabBtn.addEventListener('click', grabIpsum);
 
 </script>

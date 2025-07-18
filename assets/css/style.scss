@@ -30,6 +30,11 @@ $layout-v-pad: 15vh;
   font-size: 20px;
 }
 
+body,
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.75;
+}
+
 body {
   // todo - adapt narrow layouts (below the breakpoints 960, 720) to hidden-overflow
   overflow: hidden;
@@ -75,8 +80,6 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Bestie Seventy', sans-serif;
-  letter-spacing: .045em;
-  line-height: 2;
   margin-bottom: 1em;
   font-weight: 400;
   color: lightyellow;
@@ -87,8 +90,7 @@ header {
 
   // site title
   h1 {
-    font-size: 3.75rem;
-    margin-block-end: .75em;
+    font-size: 4.5rem;
     text-transform: initial;
     text-shadow: .111em .111em .167em mediumpurple;
 
@@ -101,6 +103,7 @@ header {
 
   // site description
   > p {
+    margin-block-start: .75em;
     font-variant: all-small-caps;
   }
 }
@@ -117,7 +120,7 @@ header {
   font-family: 'Bestie Seventy', sans-serif;
   color: mediumpurple;
   background-color: lavender;
-  box-shadow: .333em .333em .5em mediumpurple;
+  box-shadow: ($button-size * .036) ($button-size * .036) ($button-size * .111) mediumpurple;
 
   &:hover, &:active {
     color: hotpink;
@@ -125,7 +128,8 @@ header {
 
   &:active {
     background-color: lightyellow;
-    box-shadow: .111em .111em .167em mediumpurple;
+    box-shadow: ($button-size * .024) ($button-size * .024) ($button-size * .075) mediumpurple;
+    transform: scale(.9875);
   }
 }
 
@@ -137,7 +141,6 @@ header {
   display: block;
   height: 100vh;
   width: 120vw;
-  line-height: 1.6;
   user-select: none;
   opacity: .3;
 }
@@ -155,7 +158,7 @@ header h1 {
 
 @media print, screen and (max-width: 960px) {
   header h1 {
-    font-size: 3.25rem;
+    font-size: 3.75rem;
   }
 
   #grab-btn {
@@ -166,7 +169,7 @@ header h1 {
 
 @media print, screen and (max-width: 720px) {
   header h1 {
-    font-size: 2.75rem;
+    font-size: 3rem;
   }
 }
 
