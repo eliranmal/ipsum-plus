@@ -1,10 +1,10 @@
 
-# wat
+# ipsum plus+
 
-wat wat wat
+ipsum text for the rest of us
 
-🌐 [eliranmal.github.io/wat][1]
+🌐 [eliranmal.github.io/ipsum-plus][1]
 
 
 
-[1]: https://eliranmal.github.io/wat/
+[1]: https://eliranmal.github.io/ipsum-plus/
