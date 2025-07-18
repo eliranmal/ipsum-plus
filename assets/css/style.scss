@@ -5,25 +5,72 @@
 
 @import "fonts";
 
+$layout-v-pad: 15vh;
 
-// taken from theme stylesheet, declared as var' for reuse
-$font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/**
+ * note: only use absolute units for $size (e.g. no 'em'),
+ * as it's used both for font-size and box sizes
+ */
+@mixin round-button($size, $font-size: $size * .3, $border-width: $size * .0125) {
+  box-sizing: content-box;
+  display: block;
+  width: $size;
+  height: $size;
+  padding: 0;
+  border: 0 none;
+  border-radius: ($size * .5) + $border-width;
+  font-size: $font-size;
+  line-height: #{$size};
+  text-align: center;
+  cursor: pointer;
+}
 
 
-html {
+:root {
   font-size: 20px;
 }
 
 body {
+  // todo - adapt narrow layouts (below the breakpoints 960, 720) to hidden-overflow
+  overflow: hidden;
   margin: 0;
+  padding-block: $layout-v-pad;
   font-size: 1rem;
   background-color: hotpink;
   color: lightyellow;
+
+  &:before,
+  &:after {
+    position: fixed;
+    z-index: -1;
+    opacity: .3;
+    pointer-events: none;
+  }
+
+  &:before {
+    content: '✨';
+    top: -6rem;
+    right: -4rem;
+    font-size: 15rem;
+  }
+
+  &:after {
+    content: '🪄';
+    bottom: -15rem;
+    left: -11rem;
+    font-size: 30rem;
+  }
 }
 
-a, a:hover, a:focus, a:active {
-  color: mediumpurple;
-  color: lavender;
+a {
+  &,
+  &:focus {
+    color: lavender;
+  }
+
+  &:hover, &:active {
+    color: lightyellow;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,38 +82,14 @@ h1, h2, h3, h4, h5, h6 {
   color: lightyellow;
 }
 
-h1, h2 {
-  //color: #444;
-}
-
-h3, h4 {
-  margin-bottom: .4em;
-}
-
-h1 {
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-h2 {
-  margin-top: 2em;
-  font-weight: 100;
-}
-
-h4 {
-  font-style: italic;
-  font-variant: all-small-caps;
-  //color: #aaa;
-}
-
 header {
-  text-align: end;
+  text-align: center;
 
   // site title
   h1 {
-    font-size: 3.5rem;
-    line-height: 1.75;
-    margin-block-end: 0;
+    font-size: 3.75rem;
+    margin-block-end: .75em;
+    text-transform: initial;
     text-shadow: .111em .111em .167em mediumpurple;
 
     &,
@@ -82,18 +105,41 @@ header {
   }
 }
 
-footer {
-  top: 280px;
 
-  div {
-    height: 100%;
 
-    > :only-child {
-      min-height: 2.5em;
-      max-height: calc(100% - 50px);
-      overflow-y: auto;
-    }
+// components
+
+#grab-btn {
+  $button-size: 9rem;
+  @include round-button($button-size, 1rem);
+  float: right;
+  margin-top: calc(100vh - #{$button-size} - (#{$layout-v-pad} * 2));
+  font-family: 'Bestie Seventy', sans-serif;
+  color: mediumpurple;
+  background-color: lavender;
+  box-shadow: .333em .333em .5em mediumpurple;
+
+  &:hover, &:active {
+    color: hotpink;
   }
+
+  &:active {
+    background-color: lightyellow;
+    box-shadow: .111em .111em .167em mediumpurple;
+  }
+}
+
+#ipsum-text {
+  position: fixed;
+  top: 0;
+  left: -5vw;
+  z-index: -1;
+  display: block;
+  height: 100vh;
+  width: 120vw;
+  line-height: 1.6;
+  user-select: none;
+  opacity: .3;
 }
 
 
@@ -109,17 +155,5 @@ footer {
     padding: 35px 0 0;
     margin-block-start: 35px;
   }
-}
-
-
-// utilities
-
-.hidden {
-  display: none !important;
-}
-
-.disabled {
-  pointer-events: none;
-  opacity: .5;
 }
 
